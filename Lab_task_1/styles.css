@@ -1,26 +1,32 @@
-*{
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: Lato;
 }
 
-.header{
+.header {
     display: flex;
     justify-content: space-between;
     margin: 20px;
-    
-}
-.header .logo{
-    width: 100px;
-    height: 100px;
-    margin: 10px;
-}
-.logo i{
-    font-size: 50px;
-    color: rgb(247, 180, 56);
+
 }
 
-.header .name{
+.header .logo {
+    width: 80px;
+    height: 80px;
+    margin: 10px;
+}
+
+.logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.header .name {
     height: 100px;
     display: flex;
     align-items: center;
@@ -28,37 +34,103 @@
     width: 60%;
     border-radius: 40px;
     box-shadow: 3px 3px 3px 2px rgba(0, 0, 0, 0.2);
-    
+
 }
 
-.header .name h1{
+.header .name h1 {
     font-size: 50px;
     color: rgb(0, 0, 0);
 }
-.header .name i{
-    font-size: 50px;
-    color: rgb(247, 180, 56);
+
+.header .name img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
 }
-.header .name i.search{
+
+.header .name i {
+    font-size: 30px;
+    color: rgb(0, 0, 0);
+    margin: 10px;
+}
+.header .name i.search {
     color: #000;
 }
 
-.container{
+.container {
     display: flex;
     justify-content: space-between;
     margin: 20px;
 
 }
-.container .links{
+
+.container .links {
     width: 45%;
 }
-.container .links h2{
-    font-size: 050px;
-    color: rgb(0, 0, 0);
-    margin: 10px;
-    width: 100%;
+
+.container .links .link h2 {
+    color: blue;
+    font-size: 28px;
+    margin-bottom: 10px;
+    text-decoration: underline;
 }
-.container .myself{
+
+.container .links .link h3 {
+    font-size: 20px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.container .links .link p {
+    width: 60%;
+    margin-left: 15%;
+    font-size: 16px;
+}
+
+.container .links .link .link2 {
+    width: 80%;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+.container .links .link .link2 ul {
+    width: 70%;
+    margin: auto;
+}
+
+.container .links .link .link2 ul li p {
+    font-size: 16px;
+}
+
+.also_ask {
+    margin: 20px;
+    border-top: 1px solid rgb(0, 0, 0);
+    padding-top: 10px;
+}
+
+.also_ask h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.question {
+    margin: 20px;
+    border-bottom: 1px solid rgb(0, 0, 0);
+}
+
+.question h3 {
+    font-size: 20px;
+    margin: 5px;
+}
+
+.question .answer {
+    width: 80%;
+    margin: auto;
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.container .myself {
     width: 45%;
     display: flex;
     flex-direction: column;
@@ -68,7 +140,8 @@
     border-left: 1px solid rgb(0, 0, 0);
     padding-left: 5px;
 }
-.container .myself .intro{
+
+.container .myself .intro {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -78,7 +151,7 @@
     margin-bottom: 10px;
 }
 
-.container .myself .intro .image{
+.container .myself .intro .image {
     width: 180px;
     height: 180px;
     border-radius: 50%;
@@ -88,30 +161,34 @@
     align-items: center;
     margin: 10px;
 }
-.container .myself .intro .myself_name{
+
+.container .myself .intro .myself_name {
     width: 60%;
+    border-bottom: 1px solid rgb(0, 0, 0);
 }
-.container .myself .intro .myself_name span{
+
+.container .myself .intro .myself_name span {
     font-size: 30px;
     color: rgb(0, 0, 0);
     margin: 10px;
     font-weight: 800;
 }
-.container .myself .intro .myself_name .role{
+
+.container .myself .intro .myself_name .role {
     font-size: 20px;
     color: rgb(0, 0, 0);
     margin: 10px;
     font-weight: 800;
 }
 
-.container .myself p{
+.container .myself p {
     width: 80%;
     font-size: 16px;
     color: rgb(0, 0, 0);
     margin: 10px;
 }
 
-.my_links{
+.my_links {
     width: 80%;
     display: flex;
     flex-direction: column;
@@ -122,10 +199,12 @@
     padding-bottom: 10px;
     margin-bottom: 10px;
 }
-.my_links h3 a{
+
+.my_links h3 a {
     margin-left: 10px;
 }
-.profiles{
+
+.profiles {
     width: 70%;
     display: flex;
     justify-content: space-between;
@@ -135,15 +214,16 @@
     margin-bottom: 10px;
 }
 
-.profiles a .social{
+.profiles a .social {
     display: flex;
     flex-direction: column;
 }
-.profiles a{
+
+.profiles a {
     text-decoration: none;
 }
 
-.profiles a .social i{
+.profiles a .social i {
     font-size: 50px;
     color: rgb(0, 0, 0);
     margin: 10px;
