@@ -159,6 +159,11 @@ form .formf .input .inputf i{
     display: none;
 
 }
+label.error {
+    color: red !important; 
+    font-size: 12px;
+    font-weight: 400;
+}
 @media (max-width:850px){
     .container .cover{
         display: none;
