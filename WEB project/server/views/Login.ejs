@@ -1,0 +1,99 @@
+<%- include('./partials/header.ejs')%>
+    <link rel="stylesheet" href="/css/login.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <section class="wrapper">
+        <div class="form signup">
+            <header>Signup</header>
+            <form id="signupForm" action="/signup" method="post">
+                <input class="LoginInput" type="text" id="SignupEmail" name="email" placeholder="Email address" required />
+                <p class="emailerror"></p>
+                <input class="LoginInput" type="password" id="Signuppassword" name="password" placeholder="Password" required />
+                <p class="passworderror"></p>
+                <div class="checkbox">
+                    <input class="LoginInput" type="checkbox" id="signupCheck" />
+                    <label for="signupCheck">I accept all terms & conditions</label>
+                </div>
+                <input class="LoginInput" type="submit" value="Signup" />
+            </form>
+        </div>
+        <div class="form login">
+            <header>Login</header>
+            <form id="loginForm" action="/login" method="post">
+                <input class="LoginInput" type="text" id="LoginEmail" name="email" placeholder="Email address" required />
+                <p class="emailerror"></p>
+                <input class="LoginInput" type="password" id="Loginpassword" name="password" placeholder="Password" required />
+                <p class="passworderror"></p>
+                <a href="#">Forgot password?</a>
+                <input class="LoginInput" type="submit" value="Login" />
+            </form>
+        </div>
+        <script>
+            $(document).ready(function () {
+                const wrapper = $(".wrapper");
+                const signupHeader = $(".signup header");
+                const loginHeader = $(".login header");
+
+                loginHeader.on("click", function () {
+                    wrapper.addClass("active");
+                });
+
+                signupHeader.on("click", function () {
+                    wrapper.removeClass("active");
+                });
+                $("#signupForm").submit(function (e) {
+                    e.preventDefault();
+                    const email = $("#SignupEmail").val();
+                    const password = $("#Signuppassword").val();
+
+                    // Example validation, replace with your own logic
+                    if (!email || !password) {
+                        $(".emailerror").text("Email and password are required");
+                        $(".passworderror").text("Email and password are required");
+                    } else {
+                        // Clear error messages
+                        $(".emailerror").text("");
+                        $(".passworderror").text("");
+
+                        // Perform signup logic here
+                        $.post("/signup", { email, password }, function (data) {
+                            if (data.error) {
+                                $(".emailerror").text(data.error);
+                            } else {
+                                // Redirect to the home page after successful signup
+                                window.location.href = "/home";
+                            }
+                        });
+                    }
+                });
+
+                $("#loginForm").submit(function (e) {
+                    e.preventDefault();
+                    const email = $("#LoginEmail").val();
+                    const password = $("#Loginpassword").val();
+
+                    // Example validation, replace with your own logic
+                    console.log(email, password);
+                    if (!email || !password) {
+                        $(".emailerror").text("Email and password are required");
+                        $(".passworderror").text("Email and password are required");
+                    } else {
+                        // Clear error messages
+                        $(".emailerror").text("");
+                        $(".passworderror").text("");
+
+                        // Perform login logic here
+                        $.post("/login", { email, password }, function (data) {
+                            if (data.error) {
+                                $(".emailerror").text(data.error);
+                            } else {
+                                // Redirect to the home page after successful login
+                                window.location.href = "/home";
+                            }
+                        });
+                    }
+                });
+            });
+        </script>
+    </section>
+<%- include('./partials/footer.ejs')%>

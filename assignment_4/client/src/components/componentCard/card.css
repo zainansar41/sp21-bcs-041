@@ -1,0 +1,36 @@
+.card{
+    width: 250px;
+    height: 280px;
+    border-radius: 10px;
+    background-color: #171c24;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.image_container{
+    width: 220px;
+    height: 220px;
+    border-radius: 10px;
+    padding: 10px;
+}
+.card .Cardimage{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+    position: relative;
+    transition: .5s ease-in-out all;
+}
+.card .container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    color: #fff;
+    text-transform: capitalize;
+}
+.card .Cardimage:hover{
+    scale: 1.1;
+    overflow: hidden;
+}
