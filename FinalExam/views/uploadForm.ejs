@@ -1,0 +1,60 @@
+<head>
+    <link rel="stylesheet" href="/css/upload.css">
+</head>
+
+<body>
+
+    <div class="navbar_form">
+        <form id="customizationForm" class="customizationForm" method="post" action="/uploadForm" >
+            <div class="input_div">
+                <div class="single_div">
+                    <label for="name">Navbar Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="single_div">
+                    <label for="logo">Logo Class:</label>
+                    <input type="text" id="logo" name="logo" required>
+                </div>
+            </div>
+
+            <div class="input_div">
+                <div class="single_div">
+
+                    <label for="linkClass">Link Class:</label>
+                    <input type="text" id="linkClass" name="linkClass" required>
+                </div>
+            </div>
+
+            <div class="input_div">
+                <div class="single_div">
+
+                    <label for="ParentClass">Parent class:</label>
+                    <input type="text" id="ParentClass" name="ParentClass" required>
+                </div>
+                <div class="single_div">
+
+
+                    <label for="navbarLinkCode">Navbar Link Code:</label>
+                    <input type="text" id="navbarLinkCode" name="navbarLinkCode" required>
+                </div>
+            </div>
+
+            <div class="input_div">
+                <div class="single_div code_div">
+
+                    <label for="htmlCode">HTML Code:</label>
+                    <textarea id="htmlCode" name="htmlCode" placeholder="Paste HTML code here..." required></textarea>
+                </div>
+                <div class="single_div code_div">
+
+                    <label for="cssCode">CSS Code:</label>
+                    <textarea id="cssCode" name="cssCode" placeholder="Paste CSS code here..." required></textarea>
+                </div>
+            </div>
+            <button class="btn-shine" type="submit" onsubmit="">
+                <span>upload/update</span>
+            </button>
+        </form>
+    </div>
+
+</body>
