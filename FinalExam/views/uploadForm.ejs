@@ -5,15 +5,15 @@
 <body>
 
     <div class="navbar_form">
-        <form id="customizationForm" class="customizationForm" method="post" action="/uploadForm" >
+        <form id="customizationForm" class="customizationForm">
             <div class="input_div">
                 <div class="single_div">
                     <label for="name">Navbar Name:</label>
-                    <input type="text" id="name" name="name" required>
+                    <input type="text" id="name" name="name">
                 </div>
                 <div class="single_div">
                     <label for="logo">Logo Class:</label>
-                    <input type="text" id="logo" name="logo" required>
+                    <input type="text" id="logo" name="logo">
                 </div>
             </div>
 
@@ -21,7 +21,7 @@
                 <div class="single_div">
 
                     <label for="linkClass">Link Class:</label>
-                    <input type="text" id="linkClass" name="linkClass" required>
+                    <input type="text" id="linkClass" name="linkClass">
                 </div>
             </div>
 
@@ -29,13 +29,13 @@
                 <div class="single_div">
 
                     <label for="ParentClass">Parent class:</label>
-                    <input type="text" id="ParentClass" name="ParentClass" required>
+                    <input type="text" id="ParentClass" name="ParentClass">
                 </div>
                 <div class="single_div">
 
 
                     <label for="navbarLinkCode">Navbar Link Code:</label>
-                    <input type="text" id="navbarLinkCode" name="navbarLinkCode" required>
+                    <input type="text" id="navbarLinkCode" name="navbarLinkCode">
                 </div>
             </div>
 
@@ -43,12 +43,12 @@
                 <div class="single_div code_div">
 
                     <label for="htmlCode">HTML Code:</label>
-                    <textarea id="htmlCode" name="htmlCode" placeholder="Paste HTML code here..." required></textarea>
+                    <textarea id="htmlCode" name="htmlCode" placeholder="Paste HTML code here..."></textarea>
                 </div>
                 <div class="single_div code_div">
 
                     <label for="cssCode">CSS Code:</label>
-                    <textarea id="cssCode" name="cssCode" placeholder="Paste CSS code here..." required></textarea>
+                    <textarea id="cssCode" name="cssCode" placeholder="Paste CSS code here..."></textarea>
                 </div>
             </div>
             <button class="btn-shine" type="submit" onsubmit="">
@@ -58,3 +58,36 @@
     </div>
 
 </body>
+
+<script>
+    const form = document.getElementById("customizationForm");
+
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const formData = new FormData(form);
+        const formObject = {};
+        formData.forEach((value, key) => {
+            formObject[key] = value;
+        });
+
+        console.log(formObject);
+
+        const upload = await fetch("/uploadForm", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formObject),
+        });
+
+        const uploadData = await upload.json();
+        console.log(uploadData);
+        if (uploadData && uploadData.message === "uploaded successfully") {
+            window.location.reload();
+        }
+        if(uploadData && uploadData.message === "Please fill all the fields"){
+            alert("Please fill all the fields");
+        }
+    });
+
+</script>

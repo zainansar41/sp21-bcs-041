@@ -1,0 +1,122 @@
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th,
+    td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    .delete-btn {
+        background-color: #f44336;
+        color: white;
+        padding: 6px 10px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .delete-btn:hover {
+        background-color: #d32f2f;
+    }
+
+    .update-modal {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 20px;
+        background-color: white;
+        border: 1px solid #ddd;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+    }
+
+    .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+    }
+</style>
+
+<h2>Navbar List</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Navbar Name</th>
+            <th>Logo Class</th>
+            <th>Link Class</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% navbar.forEach(item=> { %>
+            <tr>
+                <td>
+                    <%= item.navbarName %>
+                </td>
+                <td>
+                    <%= item.logoClass %>
+                </td>
+                <td>
+                    <%= item.linkClass %>
+                </td>
+                <td>
+                    <button class="delete-btn" onclick="deleteNavbar('<%= item._id %>')">Delete</button>
+                </td>
+            </tr>
+            <% }); %>
+    </tbody>
+</table>
+
+<div id="updateModal" class="update-modal">
+    <span class="close-btn" onclick="closeUpdateModal()">×</span>
+    <h3>Update Navbar</h3>
+    <label for="updateNavbarName">Navbar Name:</label>
+    <input type="text" id="updateNavbarName" name="updateNavbarName">
+    <br>
+    <label for="updateLogoClass">Logo Class:</label>
+    <input type="text" id="updateLogoClass" name="updateLogoClass">
+    <br>
+    <label for="updateLinkClass">Link Class:</label>
+    <input type="text" id="updateLinkClass" name="updateLinkClass">
+    <br>
+    <button onclick="updateNavbar()">Update</button>
+</div>
+
+<script>
+    async function deleteNavbar(navbarId) {
+        try {
+            const response = await fetch(`/deleteNavbar/${navbarId}`, {
+                method: 'DELETE'
+            });
+
+            const data = await response.json();
+
+            if (data.message === 'deleted successfully') {
+                // Refresh the page or update the table as needed
+                window.location.reload();
+            } else {
+                alert('Failed to delete navbar.');
+            }
+        } catch (error) {
+            console.error('Error deleting navbar:', error);
+            alert('An error occurred while deleting navbar.');
+        }
+    }
+</script>
